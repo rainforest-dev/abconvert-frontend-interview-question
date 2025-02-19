@@ -1,4 +1,5 @@
 # Frontend Interview Challenge
+![ecommerce_github_banner](https://github.com/user-attachments/assets/3018c781-0969-45a1-b8bb-3f638aa4260d)
 
 ## Requirements
 
