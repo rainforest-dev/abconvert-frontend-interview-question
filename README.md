@@ -88,8 +88,10 @@ We highly recommend you complete this task.
   
 ## Submission
 
-Please submit the following to talent@abconvert.io
-
+Please submit the following to talent@abconvert.io. 
 1. A public GitHub repository with your project code.
 2. A live URL.
 3. A demo video showcasing your project
+
+There is no strict deadline for this project; please submit it when you believe it is ready for review.
+Good luck :)
