@@ -72,7 +72,7 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 
 ## Submission
 
-Please submit:
+Please submit the following to talent@abconvert.io
 
 1. A public GitHub repository with your project code.
 2. A live URL.
