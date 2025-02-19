@@ -1,58 +1,65 @@
-# Frontend interview question
+# Frontend Interview Challenge
 
 ## Requirements
 
-- You should use Next.js and Tailwind CSS to build the project.
-- You can use any libraries for this project. **UI libraries that do not integrate with Tailwind CSS are not allowed.**
+- You must use Next.js and Tailwind CSS to build the project.
 
-- You should build the project with the same theme as the [website](https://venue-theme-morning.myshopify.com/). The images are not important, you can use placeholder images.
-- We will provide the products data in the `assets` folder.
-- Even the question is the `frontend` interview question, you should write the `backend` code if needed (such as ssr/ssg).
+- You may use any additional libraries, **but UI libraries that do not integrate with Tailwind CSS are not allowed.**
 
-## Description
+- The project should follow the same theme as the Venue theme,
 
-This project is a minimalistic project that is built using Next.js and Tailwind CSS.
+  - Images are not important—you may use placeholder images.
 
-### Test 1
+- Product data will be provided in the assets folder.
 
-Create a e-commerce website that includes the following pages:
+- While this is a frontend-focused challenge, you should write backend code if necessary (e.g., for SSR/SSG or handling API requests).
+
+## Project Description
+
+This is a minimalistic e-commerce project built using Next.js and Tailwind CSS.
+
+### Task 1: E-Commerce Website
+
+Build an e-commerce website that includes the following pages:
 
 - [Home page](https://venue-theme-morning.myshopify.com/)
 - [Product page](https://venue-theme-morning.myshopify.com/collections/accessories/products/copy-of-drift-hat)
 - [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
 
-### Test 2 (Optional)
+### Task 2 (Optional): A/B Test Recommendation Engine
 
-Create a a/b test recommendation engine that recommends the best test recommendation for the user.
+Create an A/B test recommendation engine that suggests the best recommendations for users.
 
-- Please check the [website](https://weblens.ai/). You should implement the same functionality as the website
-- You can build it with CLI, Scripts, Api, or anything you want.
+- The implementation should replicate the functionality of [Weblens AI](https://weblens.ai/).
+
+- You may implement this using a CLI tool, scripts, APIs, or any other method.
 
 ## Evaluation criteria
 
 ### Code readability
 
-- Do you use meaningful variable and function names?
-- Do you use consistent naming conventions?
-- Do you use meaningful comments?
-- Do you use consistent code formatting?
+- Are variable and function names meaningful and descriptive?
+- Are naming conventions consistent throughout the project?
+- Are comments clear and useful?
+- Is the code properly formatted and structured?
 
 ### Code quality
 
-- Do you use the best practices for the project?
-- Do you use the best practices for the code?
-- Do you use the best practices for the performance?
-- Do you use the best practices for the style?
-- Do you use the best practices for the documentation?
+- Are best practices followed in the project structure?
+- Is the code efficient and maintainable?
+- Are performance optimizations applied where necessary?
+- Is the styling clean and consistent?
+- Is the documentation clear and well-written?
 
 ### Code maintainability
 
-- Do you follow the same style guide for the whole project?
-- Do you write a clear documentation for the code?
+- Does the project follow a consistent style guide?
+- Is there clear documentation explaining the code?
 
 ### Code performance
 
-- Do you pass the [performance tests](https://pagespeed.web.dev/)? We highly recommend you to check the performance before you submit the project.
+- Does the project pass performance tests? (You can check using [PageSpeed Insights](https://pagespeed.web.dev/))
+- While there is no minimum performance score, you should optimize the website as much as possible.
 
 ## Submission
 
