@@ -30,13 +30,15 @@ Build an e-commerce website that includes the following pages:
 - [Product page](https://venue-theme-morning.myshopify.com/collections/accessories/products/copy-of-drift-hat)
 - [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
 
-### Task 2 (Optional): A/B Test Recommendation Engine
+### Bonus Task: A/B Test Recommendation Engine
 
 Create an A/B test recommendation engine that suggests the best recommendations for users.
 
 - The implementation should replicate the functionality of [Weblens AI](https://weblens.ai/).
 
 - You may implement this using a CLI tool, scripts, APIs, or any other method.
+
+We highly recommend you complete this task. 
 
 ## Evaluation criteria
 
@@ -70,10 +72,23 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 - Does the project pass performance tests? (You can check using [PageSpeed Insights](https://pagespeed.web.dev/))
 - While there is no minimum performance score, you should optimize the website as much as possible.
 
+### Documentation
+
+- Is there a well-structured README file?
+- Does the documentation explain setup, usage, and key functionalities?
+- Are installation and deployment instructions clear?
+- Are API endpoints (if any) well-documented?
+
+### Communication
+
+- Can you explain your project clearly and concisely?
+- Are questions or clarifications raised in a timely and professional manner?
+- Are interactions with the point of contact clear and effective?
+  
 ## Submission
 
 Please submit the following to talent@abconvert.io
 
 1. A public GitHub repository with your project code.
 2. A live URL.
-3. (If you completed Task 2) A demo video showcasing your A/B test recommendation engine.
+3. A demo video showcasing your project
