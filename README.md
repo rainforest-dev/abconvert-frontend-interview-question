@@ -6,7 +6,7 @@
 
 - You may use any additional libraries, **but UI libraries that do not integrate with Tailwind CSS are not allowed.**
 
-- The project should follow the same theme as the Venue theme,
+- The project should follow the same theme as the [Venue theme](https://venue-theme-morning.myshopify.com/).
 
   - Images are not important—you may use placeholder images.
 
