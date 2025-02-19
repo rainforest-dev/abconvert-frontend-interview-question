@@ -1,4 +1,5 @@
 # Frontend Interview Challenge
+
 ![ecommerce_github_banner](https://github.com/user-attachments/assets/3018c781-0969-45a1-b8bb-3f638aa4260d)
 
 ## Requirements
@@ -9,7 +10,7 @@
 
 - The project should follow the same theme as the [Venue theme](https://venue-theme-morning.myshopify.com/).
 
-  - Images are not important—you may use placeholder images.
+  - Images are not important—you may use placeholder images. however, the product page should have a product image which we have provided in the assets folder.
 
 - Product data will be provided in the assets folder.
 
@@ -39,7 +40,7 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 
 - You may implement this using a CLI tool, scripts, APIs, or any other method.
 
-We highly recommend you complete this task. 
+We highly recommend you complete this task.
 
 ## Evaluation criteria
 
@@ -85,10 +86,11 @@ We highly recommend you complete this task.
 - Can you explain your project clearly and concisely?
 - Are questions or clarifications raised in a timely and professional manner?
 - Are interactions with the point of contact clear and effective?
-  
+
 ## Submission
 
-Please submit the following to talent@abconvert.io. 
+Please submit the following to talent@abconvert.io.
+
 1. A public GitHub repository with your project code.
 2. A live URL.
 3. A demo video showcasing your project
