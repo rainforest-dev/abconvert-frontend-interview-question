@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Interview Challenge
 
-## Getting Started
+![ecommerce_github_banner](https://github.com/user-attachments/assets/3018c781-0969-45a1-b8bb-3f638aa4260d)
 
-First, run the development server:
+## Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- You must use Next.js and Tailwind CSS to build the project.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- You may use any additional libraries, **but UI libraries that do not integrate with Tailwind CSS are not allowed.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- The project should follow the same theme as the [Venue theme](https://venue-theme-morning.myshopify.com/).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  - Images are not important—you may use placeholder images. however, the product page should have a product image which we have provided in the assets folder.
 
-## Learn More
+- Product data will be provided in the assets folder.
 
-To learn more about Next.js, take a look at the following resources:
+- While this is a frontend-focused challenge, you should write backend code if necessary (e.g., for SSR/SSG or handling API requests).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Deploy the project to a publicly accessible URL.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Extra features that go beyond the requirements and impress us are encouraged!
 
-## Deploy on Vercel
+## Project Description
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This is a minimalistic e-commerce project built using Next.js and Tailwind CSS.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Task 1: E-Commerce Website
+
+Build an e-commerce website that includes the following pages:
+
+- [Home page](https://venue-theme-morning.myshopify.com/)
+- [Product page](https://venue-theme-morning.myshopify.com/collections/accessories/products/copy-of-drift-hat)
+- [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
+
+### Bonus Task: A/B Test Recommendation Engine
+
+Create an A/B test recommendation engine that suggests the best recommendations for users.
+
+- The implementation should replicate the functionality of [Weblens AI](https://weblens.ai/).
+
+- You may implement this using a CLI tool, scripts, APIs, or any other method.
+
+We highly recommend you complete this task.
+
+## Evaluation criteria
+
+### Requirement Fulfillment
+
+- Does the project meet all the listed requirements?
+- Are there any extra features that go above and beyond what we asked for?
+
+### Code readability
+
+- Are variable and function names meaningful and descriptive?
+- Are naming conventions consistent throughout the project?
+- Are comments clear and useful?
+- Is the code properly formatted and structured?
+
+### Code quality
+
+- Are best practices followed in the project structure?
+- Is the code efficient and maintainable?
+- Are performance optimizations applied where necessary?
+- Is the styling clean and consistent?
+- Is the documentation clear and well-written?
+
+### Code maintainability
+
+- Does the project follow a consistent style guide?
+- Is there clear documentation explaining the code?
+
+### Code performance
+
+- Does the project pass performance tests? (You can check using [PageSpeed Insights](https://pagespeed.web.dev/))
+- While there is no minimum performance score, you should optimize the website as much as possible.
+
+### Documentation
+
+- Is there a well-structured README file?
+- Does the documentation explain setup, usage, and key functionalities?
+- Are installation and deployment instructions clear?
+- Are API endpoints (if any) well-documented?
+
+### Communication
+
+- Can you explain your project clearly and concisely?
+- Are questions or clarifications raised in a timely and professional manner?
+- Are interactions with the point of contact clear and effective?
+
+## Submission
+
+Please submit the following to talent@abconvert.io.
+
+1. A public GitHub repository with your project code.
+2. A live URL.
+3. A demo video showcasing your project
+
+There is no strict deadline for this project; please submit it when you believe it is ready for review.
+Good luck :)
