@@ -14,6 +14,10 @@
 
 - While this is a frontend-focused challenge, you should write backend code if necessary (e.g., for SSR/SSG or handling API requests).
 
+- Deploy the project to a publicly accessible URL.
+
+- Extra features that go beyond the requirements and impress us are encouraged!
+
 ## Project Description
 
 This is a minimalistic e-commerce project built using Next.js and Tailwind CSS.
@@ -35,6 +39,11 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 - You may implement this using a CLI tool, scripts, APIs, or any other method.
 
 ## Evaluation criteria
+
+### Requirement Fulfillment
+
+- Does the project meet all the listed requirements?
+- Are there any extra features that go above and beyond what we asked for?
 
 ### Code readability
 
@@ -63,4 +72,8 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 
 ## Submission
 
-TODO
+Please submit:
+
+1. A public GitHub repository with your project code.
+2. A live URL.
+3. (If you completed Task 2) A demo video showcasing your A/B test recommendation engine.
