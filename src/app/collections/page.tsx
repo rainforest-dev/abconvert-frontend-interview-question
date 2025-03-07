@@ -24,7 +24,7 @@ export default function Page() {
             <div className="text-background z-10 flex-col-center gap-4">
               <h2 className="text-2xl font-semibold">{collection}</h2>
               <hr className="w-10" />
-              <button className="px-6 py-2 border group-hover:block hidden">
+              <button className="btn btn-outline group-hover:block hidden">
                 View
               </button>
             </div>

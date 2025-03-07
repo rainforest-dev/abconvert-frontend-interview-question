@@ -13,10 +13,8 @@ export default function Home() {
             and elevate your lifestyle with us.
           </p>
           <div className="flex gap-2">
-            <button className="px-6 py-2 border border-yellow-700">
-              Shop All
-            </button>
-            <button className="bg-yellow-700 px-6 py-2">Shop Now</button>
+            <button className="btn btn-outline">Shop All</button>
+            <button className="btn btn-primary">Shop Now</button>
           </div>
         </div>
       </section>

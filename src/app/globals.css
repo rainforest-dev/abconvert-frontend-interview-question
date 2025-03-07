@@ -31,3 +31,18 @@
     @apply flex flex-col items-center;
   }
 }
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 h-12;
+  }
+  .btn-stretch {
+    @apply w-full;
+  }
+  .btn-primary {
+    @apply bg-yellow-700 text-background;
+  }
+  .btn-outline {
+    @apply border border-current;
+  }
+}

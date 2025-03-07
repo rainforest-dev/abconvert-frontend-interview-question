@@ -37,7 +37,7 @@ export default async function Page({
           <ProductCard
             key={product.name}
             {...product}
-            href={`/products/${name}`}
+            href={`/products/${product.name}`}
           />
         ))}
       </section>
