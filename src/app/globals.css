@@ -21,7 +21,7 @@
 }
 
 @layer utilities {
-  .flex-cneter {
+  .flex-center {
     @apply flex items-center justify-center;
   }
   .flex-row-center {
