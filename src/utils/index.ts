@@ -3,6 +3,9 @@ import _products from "@assets/products.json";
 
 export const products = _products as IProduct[];
 
+export const getProductsByCollection = (collection: string): IProduct[] =>
+  products.filter((product) => product.collection.toLowerCase() === collection);
+
 export const getCollections = () => {
   const _collections = new Set<string>();
   products.forEach((product) => {
