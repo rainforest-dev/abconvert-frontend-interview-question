@@ -13,9 +13,9 @@ export default function Header() {
   return (
     <NavigationMenu.Root
       className={clsx(
-        "w-full py-6 px-10 fixed group",
+        "w-full py-6 px-10 group",
         isHome
-          ? "bg-transparent text-background hover:bg-background hover:text-foreground"
+          ? "fixed bg-transparent text-background hover:bg-background hover:text-foreground border-b"
           : "bg-background"
       )}
     >
