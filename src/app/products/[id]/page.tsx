@@ -1,6 +1,7 @@
 import { getProductById } from "@/utils";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
+import Form from "./form";
 
 export default async function Page({
   params,
@@ -30,10 +31,7 @@ export default async function Page({
           <br />
           Tax included
         </p>
-        <div className="flex flex-col gap-4">
-          <button className="btn btn-outline btn-stretch">Add to cart</button>
-          <button className="btn btn-primary btn-stretch">Buy it now</button>
-        </div>
+        <Form name={product.name} color={product.color} />
       </div>
     </main>
   );
