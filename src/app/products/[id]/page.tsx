@@ -1,8 +1,8 @@
-import { getProductById } from "@/utils";
+import { getProductById, getProductSuggestions } from "@/utils";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
 import Form from "./form";
-import { Breadcrumb } from "@/components";
+import { Breadcrumb, ProductCard } from "@/components";
 
 export default async function Page({
   params,
@@ -21,6 +21,7 @@ export default async function Page({
     { name: product.collection, path: `/collections/${product.collection}` },
     { name: product.name, path: `/products/${id}` },
   ];
+  const suggestions = getProductSuggestions(product);
 
   return (
     <main className="container mx-auto py-12">
@@ -31,7 +32,7 @@ export default async function Page({
           alt={`${product.name} image`}
           width={300}
           height={300}
-          className="object-cover md:w-1/2 w-full aspect-square"
+          className="object-cover md:w-1/2 w-full h-min aspect-square"
         />
         <div className="flex-1">
           <h1 className="text-2xl font-bold capitalize">{product.name}</h1>
@@ -42,6 +43,18 @@ export default async function Page({
             <span className="text-xs font-extralight">Tax included</span>
           </p>
           <Form name={product.name} color={product.color} />
+          <div className="mt-10">
+            <h2 className="text-lg font-bold mb-6">Goes well with</h2>
+            <div className="flex gap-4">
+              {suggestions.map((suggestion) => (
+                <ProductCard
+                  key={suggestion.name}
+                  {...suggestion}
+                  href={`/products/${suggestion.name}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </main>
