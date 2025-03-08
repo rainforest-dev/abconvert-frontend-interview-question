@@ -20,25 +20,28 @@ export default function ColorPicker({
     onChange(e.target.value);
   };
   return (
-    <fieldset className={clsx("flex-row-center gap-2", className)}>
-      {color.map((color) => (
-        <label
-          key={`${name}-${color}`}
-          id={`${name}-${color}`}
-          className="h-full aspect-square rounded-full block has-[:checked]:outline cursor-pointer"
-          style={{ backgroundColor: color }}
-        >
-          <input
-            type="radio"
-            name={name}
+    <fieldset>
+      <div className={clsx("flex-row-center gap-3", className)}>
+        {color.map((color) => (
+          <label
+            key={`${name}-${color}`}
             id={`${name}-${color}`}
-            value={color}
-            checked={value === color}
-            onChange={handleColorSelected}
-            className="sr-only"
-          />
-        </label>
-      ))}
+            title={color}
+            className="h-full aspect-square rounded-full block has-[:checked]:outline outline-offset-1 cursor-pointer"
+            style={{ backgroundColor: color }}
+          >
+            <input
+              type="radio"
+              name={name}
+              id={`${name}-${color}`}
+              value={color}
+              checked={value === color}
+              onChange={handleColorSelected}
+              className="sr-only"
+            />
+          </label>
+        ))}
+      </div>
     </fieldset>
   );
 }

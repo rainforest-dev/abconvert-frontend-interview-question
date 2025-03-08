@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <NavigationMenu.Root
       className={clsx(
-        "w-full py-6 px-10 group",
+        "w-full py-6 px-10 group z-50",
         isHome
           ? "fixed bg-transparent text-background hover:bg-background hover:text-foreground border-b"
           : "bg-background"
@@ -30,7 +30,7 @@ export default function Header() {
             {collections.slice(0, 4).map((collection) => (
               <NextLink
                 key={collection}
-                href={`/collections/${collection.toLowerCase()}`}
+                href={`/collections/${collection}`}
                 className="flex-col-center uppercase gap-4 my-auto"
               >
                 <div className="h-full aspect-square overflow-hidden">

@@ -9,14 +9,15 @@ export default async function Page({
 }) {
   const { name } = await params;
   const products = getProductsByCollection(name);
+  const length = products.length;
 
   return (
-    <main className="container mx-auto flex flex-col gap-20">
+    <main className="container mx-auto">
       <section className="flex-row-center gap-10">
-        <div className="w-2/5 flex-col-center gap-4">
-          <h1 className="capitalize font-bold text-4xl">{name}</h1>
-          <hr className="w-10" />
-          <p>
+        <div className="w-1/3 flex-col-center gap-4">
+          <h1 className="capitalize font-bold text-xl">{name}</h1>
+          <hr className="divider" />
+          <p className="text-sm leading-loose">
             Choose well and buy less. We believe in owning fewer, quality things
             and making them last a long time. That’s why if any of our product
             ever breaks down, you can send it back to us and we’ll repair it.
@@ -32,6 +33,10 @@ export default async function Page({
           />
         </div>
       </section>
+      <div className="flex mb-4 mt-10 text-xs text-gray-500">
+        <div className="grow"></div>
+        <div>{length} products</div>
+      </div>
       <section className="grid grid-cols-3 gap-10">
         {products.map((product) => (
           <ProductCard

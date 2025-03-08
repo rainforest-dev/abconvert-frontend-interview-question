@@ -16,10 +16,10 @@ export default function ProductCard({
   color,
   href,
 }: IProps) {
-  const [selectedColor, setSelectedColor] = useState(color[0]);
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
   return (
-    <div>
+    <div className="text-sm">
       <NextLink href={href}>
         <NextImage
           src={`/product-images/${image}`}
@@ -38,7 +38,7 @@ export default function ProductCard({
         onChange={setSelectedColor}
         color={color}
         name={name}
-        className="h-4"
+        className="h-3 mt-3 pl-1"
       />
     </div>
   );

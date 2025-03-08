@@ -11,15 +11,24 @@ export default function Form({
 
   return (
     <form>
-      <div className="flex flex-col gap-2">
-        <p>Color: ${selectedColor}</p>
+      <div className="flex flex-col gap-2 mb-8 text-xs">
+        <p className="font-bold">
+          Color: <span className="text-gray-500">{selectedColor}</span>
+        </p>
         <ColorPicker
           value={selectedColor}
           onChange={setSelectedColor}
           color={color}
           name={name}
-          className="h-5"
+          className="h-5 px-1.5"
         />
+      </div>
+      <div className="text-xs flex-row-center gap-1 mb-8">
+        <span className="relative inline-flex size-2">
+          <span className="animate-ping absolute inline-flex size-full rounded-full bg-red-400 opacity-75"></span>
+          <span className="rounded-full size-full bg-red-500"></span>
+        </span>
+        Only {Math.floor(Math.random() * 10) + 1} in stock
       </div>
       <div className="flex flex-col gap-4">
         <button className="btn btn-outline btn-stretch">Add to cart</button>

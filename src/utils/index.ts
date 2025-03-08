@@ -4,7 +4,7 @@ import _products from "@assets/products.json";
 export const products = _products as IProduct[];
 
 export const getProductsByCollection = (collection: string): IProduct[] =>
-  products.filter((product) => product.collection.toLowerCase() === collection);
+  products.filter((product) => product.collection === collection);
 
 export const getProductById = (id: string) =>
   products.find((product) => product.name === id);

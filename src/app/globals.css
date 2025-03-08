@@ -40,9 +40,12 @@
     @apply w-full;
   }
   .btn-primary {
-    @apply bg-yellow-700 text-background;
+    @apply bg-primary text-background;
   }
   .btn-outline {
     @apply border border-current;
+  }
+  .divider {
+    @apply w-9 border-primary;
   }
 }

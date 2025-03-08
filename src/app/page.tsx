@@ -1,10 +1,18 @@
+import NextImage from "next/image";
+
 export default function Home() {
   return (
     <main>
-      <section className="w-full h-screen bg-[url('/images/placeholder.jpg')] bg-cover bg-no-repeat flex flex-col justify-center items-start px-10">
-        <div className="text-background flex flex-col gap-2">
+      <section className="w-full h-screen flex flex-col justify-center items-start px-10 z-0">
+        <NextImage
+          src="/images/placeholder.jpg"
+          alt="hero image"
+          fill
+          className="object-cover brightness-75"
+        />
+        <div className="text-background flex flex-col gap-2 z-10">
           <h1 className="text-5xl w-fit">Less but better</h1>
-          <hr className="w-10" />
+          <hr className="divider" />
           <p className="max-w-[33%] text-lg">
             Discover the art of minimalism. Choose quality over quantity and
             experience the joy of owning fewer, but truly special items. Our
