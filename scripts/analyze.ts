@@ -9,6 +9,9 @@ export const format = {
       items: {
         type: "object",
         properties: {
+          suggestion: {
+            type: "string",
+          },
           hypothesis: {
             type: "string",
           },
@@ -19,7 +22,7 @@ export const format = {
             type: "string",
           },
         },
-        required: ["hypothesis", "control", "variant"],
+        required: ["suggestion", "hypothesis", "control", "variant"],
       },
     },
   },

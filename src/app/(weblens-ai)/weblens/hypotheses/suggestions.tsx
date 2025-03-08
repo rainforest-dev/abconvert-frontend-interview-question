@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 interface ISuggestion {
+  suggestion: string;
   hypothesis: string;
   control: string;
   variant: string;
@@ -38,26 +39,32 @@ export default function Suggestions() {
   if (file) {
     return (
       <div className="flex-col-center gap-10">
-        {suggestions.map((suggestion) => (
+        {suggestions.map((suggestion, index) => (
           <div
             key={suggestion.hypothesis}
             className="text-foreground p-4 odd:bg-amber-100 even:bg-purple-100"
           >
-            <div className="bg-background flex flex-col gap-6 py-6">
-              <div className="px-8">
-                <h3 className="text-xl font-bold">Hypothesis</h3>
+            <h3 className="flex-row-center gap-1 mb-2">
+              <div className="bg-foreground text-background size-6 flex-center rounded-full">
+                {index + 1}
+              </div>
+              {suggestion.suggestion}
+            </h3>
+            <ul className="bg-background flex flex-col gap-6 py-6">
+              <li className="px-8">
+                <h4 className="text-xl font-bold">Hypothesis</h4>
                 <p>{suggestion.hypothesis}</p>
-              </div>
+              </li>
               <hr />
-              <div className="px-8">
-                <h3 className="text-xl font-bold">Control</h3>
+              <li className="px-8">
+                <h4 className="text-xl font-bold">Control</h4>
                 <p>{suggestion.control}</p>
-              </div>
-              <div className="px-8">
-                <h3 className="text-xl font-bold">Variant</h3>
+              </li>
+              <li className="px-8">
+                <h4 className="text-xl font-bold">Variant</h4>
                 <p>{suggestion.variant}</p>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         ))}
         <button
