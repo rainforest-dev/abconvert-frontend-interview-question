@@ -8,15 +8,18 @@
     --foreground: #171717;
   }
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     :root {
       --background: #0a0a0a;
       --foreground: #ededed;
     }
-  }
+  } */
 
   body {
     @apply bg-background text-foreground font-sans;
+  }
+  main {
+    @apply z-0;
   }
 }
 
@@ -29,5 +32,23 @@
   }
   .flex-col-center {
     @apply flex flex-col items-center;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 h-12;
+  }
+  .btn-stretch {
+    @apply w-full;
+  }
+  .btn-primary {
+    @apply bg-primary text-background;
+  }
+  .btn-outline {
+    @apply border border-current;
+  }
+  .divider {
+    @apply w-9 border-primary;
   }
 }
