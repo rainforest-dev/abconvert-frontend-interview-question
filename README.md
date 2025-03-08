@@ -38,9 +38,11 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 
 - The implementation should replicate the functionality of [Weblens AI](https://weblens.ai/).
 
-  - It crawls HTML.
-  - It generates suggestions for A/B testing.
-  - It has a UI interface with input and output suggestions.
+- Concrete system flow:
+
+  - Implement a system to scrape a your website which you built in the first task.
+  - Utilize AI to determine if there are any elements suitable for A/B testing.
+  - Develop an effective method to present the results.
 
 - You may implement this using a CLI tool, scripts, APIs, or any other method.
 
