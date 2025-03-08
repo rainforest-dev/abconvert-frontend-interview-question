@@ -1,4 +1,8 @@
-import { getProductById, getProductSuggestions } from "@/utils";
+import {
+  getProductById,
+  getProductSuggestions,
+  getProductsUserMayAlsoLike,
+} from "@/utils";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
 import Form from "./form";
@@ -22,11 +26,12 @@ export default async function Page({
     { name: product.name, path: `/products/${id}` },
   ];
   const suggestions = getProductSuggestions(product);
+  const mayAlsoLike = getProductsUserMayAlsoLike(product);
 
   return (
-    <main className="container mx-auto py-12">
+    <main className="py-12">
       <Breadcrumb crumbs={crumbs} />
-      <section className="flex gap-10 mt-10 md:flex-row flex-col">
+      <section className="flex gap-10 mt-10 md:flex-row flex-col container mx-auto">
         <NextImage
           src={`/product-images/${product.image}`}
           alt={`${product.name} image`}
@@ -55,6 +60,54 @@ export default async function Page({
               ))}
             </div>
           </div>
+        </div>
+      </section>
+      <section className="bg-gray-50 py-10 mt-10">
+        <div className="container mx-auto flex-col-center">
+          <h2 className="text-lg font-bold">Crafted for every occasion</h2>
+          <hr className="divider mt-3.5 mb-10" />
+          <NextImage
+            src="/images/placeholder.jpg"
+            alt="placeholder"
+            width={400}
+            height={300}
+            className="w-full aspect-video object-cover"
+          />
+          <div className="flex gap-16 mt-16">
+            <div>
+              <h3 className="font-bold">Versatile</h3>
+              <p className="text-sm">
+                Don&apos;t limit yourself with our multifunctional range of
+                products.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">Weatherproof</h3>
+              <p className="text-sm">
+                Our gear will protect you from elements, rain or shine.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">Dependable</h3>
+              <p className="text-sm">
+                Don&apos;t worry. Challenge the test of time with our proven
+                durability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="flex-col-center mt-10 container mx-auto">
+        <h2 className="text-lg font-bold">You may also like</h2>
+        <hr className="divider mt-3.5 mb-5" />
+        <div className="flex gap-4">
+          {mayAlsoLike.map((product) => (
+            <ProductCard
+              key={product.name}
+              {...product}
+              href={`/products/${product.name}`}
+            />
+          ))}
         </div>
       </section>
     </main>
