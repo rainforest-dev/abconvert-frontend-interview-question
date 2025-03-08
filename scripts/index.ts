@@ -8,7 +8,7 @@ import {
   text,
 } from "@clack/prompts";
 import { getPageContent } from "./crawler";
-import { analyzeContent } from "./analyze";
+import { analyzeContent, type ProviderType } from "./analyze";
 
 async function main() {
   intro("A/B Testing Suggestions Generator");
@@ -23,29 +23,28 @@ async function main() {
     process.exit(0);
   }
 
-  const providers: {
-    [key: string]: { url: string };
-  } = {
-    ollama: {
-      url: process.env.OLLAMA_API_URL || "http://rainforest-mini.local:11434",
-    },
-    openai: { url: process.env.OPENAI_API_URL || "https://api.openai.com/v1" },
-  };
   const model = await select({
     message: "Choose a language model to analyze the content:",
     options: [
       {
         label: "llama 3.2",
         value: {
-          provider: "ollama",
+          provider: "ollama" as ProviderType,
           model: "llama3.2:latest",
         },
       },
       {
         label: "Phi 4",
         value: {
-          provider: "ollama",
+          provider: "ollama" as ProviderType,
           model: "phi4:latest",
+        },
+      },
+      {
+        label: "gpt-4o-mini",
+        value: {
+          provider: "openai" as ProviderType,
+          model: "gpt-4o-mini",
         },
       },
     ],
@@ -55,11 +54,6 @@ async function main() {
     cancel("Operation cancelled.");
     process.exit(0);
   }
-  if (!(model.provider in providers)) {
-    throw new Error(`Provider ${model.provider} not found.`);
-  }
-
-  const provider = providers[model.provider];
 
   let content: string;
 
@@ -75,7 +69,7 @@ async function main() {
       {
         title: "Analyzing the content",
         task: async () => {
-          await analyzeContent(content, provider.url, model.model);
+          await analyzeContent(content, model.provider, model.model);
         },
       },
     ]);

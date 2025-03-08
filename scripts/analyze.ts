@@ -1,5 +1,13 @@
 import * as fs from "fs";
+import OpenAI from "openai";
 import messages from "./messages.json";
+import { configDotenv } from "dotenv";
+
+configDotenv();
+
+const openai = new OpenAI();
+
+export type ProviderType = "ollama" | "openai";
 
 export const format = {
   type: "object",
@@ -29,7 +37,7 @@ export const format = {
   required: ["suggestions"],
 };
 
-interface IResponse {
+interface IOllamaResponse {
   model: string;
   created_at: string;
   message: {
@@ -38,11 +46,8 @@ interface IResponse {
   };
 }
 
-export async function analyzeContent(
-  content: string,
-  url: string,
-  model: string
-) {
+const analyzeWithOllama = async (content: string, model: string) => {
+  const url = process.env.OLLAMA_API_URL ?? "http://localhost:11434";
   const res = await fetch(`${url}/api/chat`, {
     method: "POST",
     headers: {
@@ -56,15 +61,52 @@ export async function analyzeContent(
     }),
   });
   if (res.ok) {
-    const data = (await res.json()) as IResponse;
-    // save result to json file
-    fs.writeFileSync(
-      "suggestions.json",
-      JSON.stringify(JSON.parse(data.message.content).suggestions, null, 2)
-    );
+    const data = (await res.json()) as IOllamaResponse;
+    return JSON.parse(data.message.content).suggestions;
+  }
+};
+
+const analyzeWithOpenAI = async (content: string, model: string) => {
+  const completion = await openai.chat.completions.create({
+    model,
+    messages: [
+      {
+        role: "user",
+        content: [
+          ...messages.map((message) => ({
+            type: "text" as const,
+            text: message.content,
+          })),
+          { type: "text", text: content },
+        ],
+      },
+    ],
+    // response_format: format
+  });
+  const data = completion.choices[0].message.content;
+  console.log(data);
+  return {};
+};
+
+export async function analyzeContent(
+  content: string,
+  provider: ProviderType,
+  model: string
+) {
+  let data: object | undefined = undefined;
+  switch (provider) {
+    case "ollama":
+      data = await analyzeWithOllama(content, model);
+      break;
+    case "openai":
+      data = await analyzeWithOpenAI(content, model);
+      break;
+    default:
+      break;
+  }
+  if (data) {
+    fs.writeFileSync("suggestions.json", JSON.stringify(data, null, 2));
   } else {
-    throw new Error(
-      `Failed to analyze content: ${res.statusText} ${await res.text()}`
-    );
+    throw new Error("Failed to generate A/B testing suggestions.");
   }
 }
