@@ -5,21 +5,46 @@ import { NavigationMenu } from "radix-ui";
 import { collections } from "@/utils";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { useEffect, useRef } from "react";
+import { throttle } from "lodash-es";
 
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = throttle((e: WheelEvent) => {
+      if (e.deltaY > 0 && window.scrollY > 100) {
+        ref.current?.classList.add("max-h-0", "opacity-0");
+        if (isHome && ref.current) {
+          ref.current.dataset.transparent = "false";
+        }
+      } else {
+        ref.current?.classList.remove("max-h-0", "opacity-0");
+        if (isHome && ref.current && window.scrollY <= 100) {
+          ref.current.dataset.transparent = "true";
+        }
+      }
+    }, 500);
+    window.addEventListener("wheel", handleScroll);
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [isHome]);
 
   return (
     <NavigationMenu.Root
+      ref={ref}
+      data-transparent={isHome}
       className={clsx(
-        "w-full py-6 z-50 text-xs font-semibold",
+        "w-full py-6 z-50 text-xs font-semibold sticky top-0 duration-300 group",
         isHome
-          ? "fixed bg-transparent text-background hover:bg-background hover:text-foreground border-b"
-          : "bg-background relative"
+          ? "bg-transparent text-background data-[transparent=false]:bg-background data-[transparent=false]:text-foreground hover:bg-background hover:text-foreground border-b"
+          : " bg-background"
       )}
     >
-      <NavigationMenu.List className="flex-row-center gap-8 px-10 group">
+      <NavigationMenu.List className="flex-row-center gap-8 px-10">
         <NavigationMenu.Item>
           <NavigationMenu.Trigger>
             <NextLink href="#" className="uppercase">
@@ -69,7 +94,7 @@ export default function Header() {
                 alt="logo"
                 width={150}
                 height={40}
-                className={isHome ? "group-hover:block hidden" : ""}
+                className="group-hover:block hidden group-data-[transparent=false]:block"
               />
               {isHome && (
                 <NextImage
@@ -77,7 +102,7 @@ export default function Header() {
                   alt="logo"
                   width={150}
                   height={40}
-                  className="block group-hover:hidden"
+                  className="group-hover:hidden block group-data-[transparent=false]:hidden"
                 />
               )}
             </NextLink>

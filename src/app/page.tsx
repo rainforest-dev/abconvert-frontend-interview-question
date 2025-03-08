@@ -1,8 +1,12 @@
+import { collections } from "@/utils";
 import NextImage from "next/image";
+import { Tabs } from "radix-ui";
+import CollectionTabContent from "./CollectionTabContent";
 
 export default function Home() {
+  const topCollections = collections.slice(0, 3);
   return (
-    <main>
+    <main className="pb-32">
       <section className="w-full h-screen flex flex-col justify-center items-start px-10 z-0">
         <NextImage
           src="/images/placeholder.jpg"
@@ -25,6 +29,30 @@ export default function Home() {
             <button className="btn btn-primary">Shop Now</button>
           </div>
         </div>
+      </section>
+      <section className="flex-col-center">
+        <h1 className="text-xl font-bold">Collections</h1>
+        <hr className="divider mt-3 mb-5" />
+        <Tabs.Root defaultValue={topCollections[0]}>
+          <Tabs.List className="flex-center gap-5 mb-10 text-sm">
+            {topCollections.map((collection) => (
+              <Tabs.Trigger
+                key={collection}
+                value={collection}
+                className="text-gray-700 data-[state=active]:text-foreground after:content-[''] after:block after:mt-2
+                            after:border-b-2 after:border-foreground after:transition-transform 
+                            after:scale-0 data-[state=active]:after:scale-100 hover:after:scale-100"
+              >
+                {collection}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+          {topCollections.map((collection) => (
+            <Tabs.Content key={collection} value={collection} className="h-96">
+              <CollectionTabContent collection={collection} />
+            </Tabs.Content>
+          ))}
+        </Tabs.Root>
       </section>
     </main>
   );

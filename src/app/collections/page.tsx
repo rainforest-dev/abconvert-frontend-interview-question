@@ -4,7 +4,7 @@ import NextLink from "next/link";
 
 export default function Page() {
   return (
-    <main className="container mx-auto flex flex-col">
+    <main className="container mx-auto flex flex-col py-12">
       <h1 className="text-center text-xl font-bold">Collections</h1>
       <hr className="divider mb-4 mt-3 self-center" />
       <section className="grid grid-cols-3 gap-4">
