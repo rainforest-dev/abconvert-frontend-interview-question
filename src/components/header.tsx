@@ -13,20 +13,27 @@ export default function Header() {
   return (
     <NavigationMenu.Root
       className={clsx(
-        "w-full py-6 px-10 group z-50",
+        "w-full py-6 z-50 text-xs font-semibold",
         isHome
           ? "fixed bg-transparent text-background hover:bg-background hover:text-foreground border-b"
-          : "bg-background"
+          : "bg-background relative"
       )}
     >
-      <NavigationMenu.List className="flex-row-center">
+      <NavigationMenu.List className="flex-row-center gap-8 px-10 group">
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger>
+            <NextLink href="#" className="uppercase">
+              Store
+            </NextLink>
+          </NavigationMenu.Trigger>
+        </NavigationMenu.Item>
         <NavigationMenu.Item>
           <NavigationMenu.Trigger>
             <NextLink href="/collections" className="uppercase">
               Collections
             </NextLink>
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="flex gap-4" data-state="open">
+          <NavigationMenu.Content className="flex gap-4">
             {collections.slice(0, 4).map((collection) => (
               <NextLink
                 key={collection}
@@ -39,13 +46,20 @@ export default function Header() {
                     alt={collection}
                     width={300}
                     height={300}
-                    objectFit="cover"
+                    className="object-cover"
                   />
                 </div>
                 <span>{collection}</span>
               </NextLink>
             ))}
           </NavigationMenu.Content>
+        </NavigationMenu.Item>
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger>
+            <NextLink href="#" className="uppercase">
+              Blog
+            </NextLink>
+          </NavigationMenu.Trigger>
         </NavigationMenu.Item>
         <NavigationMenu.Item className="absolute left-1/2 -translate-x-1/2">
           <NavigationMenu.Link asChild>
@@ -69,9 +83,10 @@ export default function Header() {
             </NextLink>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
+        <NavigationMenu.Indicator className="h-px bg-foreground z-10 transition" />
       </NavigationMenu.List>
 
-      <NavigationMenu.Viewport className="absolute bottom-0 inset-x-0 translate-y-full border h-96 flex-center bg-background" />
+      <NavigationMenu.Viewport className="absolute bottom-0 inset-x-0 translate-y-full h-96 flex-center bg-background shadow-lg" />
     </NavigationMenu.Root>
   );
 }

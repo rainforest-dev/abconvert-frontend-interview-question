@@ -28,7 +28,7 @@ export default function Form({
           <span className="animate-ping absolute inline-flex size-full rounded-full bg-red-400 opacity-75"></span>
           <span className="rounded-full size-full bg-red-500"></span>
         </span>
-        Only {Math.floor(Math.random() * 10) + 1} in stock
+        Only 3 in stock
       </div>
       <div className="flex flex-col gap-4">
         <button className="btn btn-outline btn-stretch">Add to cart</button>

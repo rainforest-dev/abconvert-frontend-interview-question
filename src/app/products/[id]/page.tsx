@@ -17,9 +17,9 @@ export default async function Page({
   }
 
   const crumbs = [
-    { name: "Home", href: "/" },
-    { name: product.collection, href: `/collections/${product.collection}` },
-    { name: product.name, href: `/products/${id}` },
+    { name: "Home", path: "/" },
+    { name: product.collection, path: `/collections/${product.collection}` },
+    { name: product.name, path: `/products/${id}` },
   ];
 
   return (

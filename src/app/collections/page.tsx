@@ -19,8 +19,7 @@ export default function Page() {
               alt={collection}
               width={300}
               height={300}
-              objectFit="cover"
-              className="absolute size-full brightness-75"
+              className="object-cover absolute size-full brightness-75"
             />
             <div className="text-background z-10 flex-col-center gap-4">
               <h2 className="text-2xl font-semibold">{collection}</h2>
