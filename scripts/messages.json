@@ -1,0 +1,19 @@
+[
+  { "role": "system", "content": "You are a A/B testing assistant." },
+  {
+    "role": "user",
+    "content": "hypothesis: suggestion and explanation for A/B testing."
+  },
+  {
+    "role": "user",
+    "content": "control: specific html tag name"
+  },
+  {
+    "role": "user",
+    "content": "variant: concrete action to apply on control element"
+  },
+  {
+    "role": "user",
+    "content": "Analyze the following HTML content and provide suggestions for A/B testing on user experience. please provide at lease three cases."
+  }
+]
