@@ -38,10 +38,10 @@ export default function Header() {
       ref={ref}
       data-transparent={isHome}
       className={clsx(
-        "w-full px-10 *:py-6 z-50 text-xs font-semibold sticky top-0 duration-300 group grid grid-cols-3 items-center",
+        "w-full px-10 *:py-6 z-50 text-xs font-semibold top-0 duration-300 group grid grid-cols-3 items-center",
         isHome
-          ? "bg-transparent text-background data-[transparent=false]:bg-background data-[transparent=false]:text-foreground hover:bg-background hover:text-foreground border-b"
-          : " bg-background"
+          ? "fixed bg-transparent text-background data-[transparent=false]:bg-background data-[transparent=false]:text-foreground hover:bg-background hover:text-foreground border-b"
+          : "sticky bg-background"
       )}
     >
       <NavigationMenu.Root className="col-span-full md:col-span-1 order-3 md:order-none place-self-center md:place-self-auto">

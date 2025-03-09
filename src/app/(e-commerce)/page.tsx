@@ -7,7 +7,7 @@ export default function Home() {
   const topCollections = collections.slice(0, 3);
   return (
     <main className="pb-32">
-      <section className="w-full h-screen flex flex-col justify-center items-start px-10 z-0">
+      <section className="w-full h-screen flex flex-col justify-center items-start px-10 z-0 relative">
         <NextImage
           src="/images/placeholder.jpg"
           alt="hero image"
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex-col-center">
+      <section className="flex-col-center mt-16">
         <h1 className="text-xl font-bold">Collections</h1>
         <hr className="divider mt-3 mb-5" />
         <Tabs.Root defaultValue={topCollections[0]}>
