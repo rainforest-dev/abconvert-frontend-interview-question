@@ -1,5 +1,6 @@
 "use client";
 
+import { FileUpload } from "@/components";
 import { useEffect, useState } from "react";
 
 interface ISuggestion {
@@ -14,13 +15,6 @@ export default function Suggestions() {
   // otherwise display the suggestions from json file
   const [file, setFile] = useState<File | null>(null);
   const [suggestions, setSuggestions] = useState<ISuggestion[]>([]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-    }
-  };
 
   const pickAnother = () => {
     setSuggestions([]);
@@ -86,18 +80,19 @@ export default function Suggestions() {
   }
 
   return (
-    <label
-      htmlFor="suggestions-file"
-      className="flex-center flex-col gap-10 w-full aspect-square border border-dashed"
+    <FileUpload
+      value={file}
+      onChange={setFile}
+      validateOnDrag={(item) => item.type === "application/json"}
+      accept=".json"
+      name="suggestions-file"
     >
-      <h1 className="text-xl">Upload Suggestions File</h1>
-      <input
-        type="file"
-        id="suggestions-file"
-        name="suggestions-file"
-        onChange={handleFileChange}
-        className="sr-only"
-      />
-    </label>
+      <div
+        className="flex-center flex-col gap-10 w-full aspect-square border border-dashed cursor-pointer
+                group-data-[is-dragover=true]:border-amber-300 group-data-[is-dragover=true]:bg-amber-500/10"
+      >
+        <h1 className="text-xl">Upload Suggestions File</h1>
+      </div>
+    </FileUpload>
   );
 }
