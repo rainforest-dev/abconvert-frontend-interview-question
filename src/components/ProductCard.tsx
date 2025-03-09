@@ -4,6 +4,7 @@ import NextImage from "next/image";
 import NextLink from "next/link";
 import { useState } from "react";
 import { ColorPicker } from "@/components";
+import { productImage } from "@/utils";
 
 interface IProps extends IProduct {
   href: string;
@@ -22,7 +23,7 @@ export default function ProductCard({
     <div className="text-sm">
       <NextLink href={href}>
         <NextImage
-          src={`/product-images/${image}`}
+          src={productImage(image)}
           alt={`${name} image`}
           width={300}
           height={300}

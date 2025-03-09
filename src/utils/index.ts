@@ -36,3 +36,5 @@ export const getCollections = () => {
 };
 
 export const collections = getCollections();
+
+export const productImage = (image: string) => `/product-images/${image}`;

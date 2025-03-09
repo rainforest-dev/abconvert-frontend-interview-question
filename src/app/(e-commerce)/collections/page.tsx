@@ -1,6 +1,11 @@
 import { collections } from "@/utils";
+import type { Metadata } from "next";
 import NextImage from "next/image";
 import NextLink from "next/link";
+
+export const metadata: Metadata = {
+  title: "Collections - Venue Theme Morning",
+};
 
 export default function Page() {
   return (

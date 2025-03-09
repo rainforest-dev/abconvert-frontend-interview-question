@@ -2,17 +2,37 @@ import {
   getProductById,
   getProductSuggestions,
   getProductsUserMayAlsoLike,
+  productImage,
 } from "@/utils";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
 import Form from "./form";
 import { Breadcrumb, ProductCard } from "@/components";
+import type { Metadata, ResolvingMetadata } from "next";
 
-export default async function Page({
-  params,
-}: {
+type Props = {
   params: Promise<{ id: string }>;
-}) {
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { id } = await params;
+  const product = getProductById(id);
+
+  if (!product) return {};
+
+  const previousImages = (await parent).openGraph?.images || [];
+  return {
+    title: `${product.name} - Venue Theme Morning`,
+    openGraph: {
+      images: [productImage(product.image), ...previousImages],
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { id } = await params;
   const product = getProductById(id);
 
@@ -33,7 +53,7 @@ export default async function Page({
       <Breadcrumb crumbs={crumbs} />
       <section className="flex gap-10 mt-10 md:flex-row flex-col container mx-auto">
         <NextImage
-          src={`/product-images/${product.image}`}
+          src={productImage(product.image)}
           alt={`${product.name} image`}
           width={300}
           height={300}

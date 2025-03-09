@@ -1,12 +1,29 @@
 import { getProductsByCollection } from "@/utils";
 import { ProductCard } from "@/components";
 import NextImage from "next/image";
+import type { Metadata, ResolvingMetadata } from "next";
 
-export default async function Page({
-  params,
-}: {
+type Props = {
   params: Promise<{ name: string }>;
-}) {
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { name } = await params;
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${name} - Venue Theme Morning`,
+    openGraph: {
+      images: ["/images/placeholder.jpg", ...previousImages],
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { name } = await params;
   const products = getProductsByCollection(name);
   const length = products.length;
