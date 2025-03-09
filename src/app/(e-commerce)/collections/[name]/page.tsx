@@ -13,6 +13,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { name } = await params;
 
+  if (name === "all") {
+    return {
+      title: "The Store - Venue Theme Morning",
+    };
+  }
+
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -25,6 +31,7 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { name } = await params;
+  const title = name === "all" ? "The Store" : name;
   const products = getProductsByCollection(name);
   const length = products.length;
 
@@ -32,7 +39,7 @@ export default async function Page({ params }: Props) {
     <main className="container mx-auto">
       <section className="flex-row-center gap-10">
         <div className="w-1/3 flex-col-center gap-4">
-          <h1 className="capitalize font-bold text-xl">{name}</h1>
+          <h1 className="capitalize font-bold text-xl">{title}</h1>
           <hr className="divider" />
           <p className="text-sm leading-loose">
             Choose well and buy less. We believe in owning fewer, quality things

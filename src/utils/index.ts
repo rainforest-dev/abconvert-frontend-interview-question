@@ -3,8 +3,18 @@ import _products from "@assets/products.json";
 
 export const products = _products as IProduct[];
 
+/**
+ * Get products by collection.
+ * if collection is "all", return all products.
+ * else filter products by collection name.
+ *
+ * @param {string} collection - The name of the collection to filter by.
+ * @returns {IProduct[]} - An array of products that belong to the specified collection.
+ */
 export const getProductsByCollection = (collection: string): IProduct[] =>
-  products.filter((product) => product.collection === collection);
+  collection === "all"
+    ? products
+    : products.filter((product) => product.collection === collection);
 
 export const getProductSuggestions = (product: IProduct, top = 3) => {
   const suggestions = products.filter(

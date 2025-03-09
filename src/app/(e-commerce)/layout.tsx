@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "Venue is the perfect theme for ambitious brands who need a store that will grow with them. Battle tested by thousands of merchants, Venue won't let you down.",
   openGraph: {
     images: ["/images/e-commerce-preview.png"],
+    siteName: "Venue Theme Morning",
   },
 };
 
