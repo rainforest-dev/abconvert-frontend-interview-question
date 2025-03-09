@@ -32,9 +32,9 @@ Build an e-commerce website that includes the following pages:
 - [Product page](https://venue-theme-morning.myshopify.com/collections/accessories/products/copy-of-drift-hat)
 - [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
 
+https://github.com/user-attachments/assets/3c7523fc-fa7b-436e-92f9-8a32cc5d8ef3
 > - [GitHub Repo](https://github.com/rainforest-dev/abconvert-frontend-interview-question)
-> - [Live URL](https://abconvert-frontend-interview-question.vercel.app/)
-> - ![Demo Video](./demos/task1.mp4)
+> - [Live URL](https://abconvert-frontend-interview-question.vercel.app/) 
 
 #### Project Structure
 
