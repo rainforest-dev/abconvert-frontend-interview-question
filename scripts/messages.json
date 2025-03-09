@@ -1,0 +1,11 @@
+[
+  { "role": "system", "content": "You are a A/B testing assistant." },
+  {
+    "role": "user",
+    "content": "provide at least 3 cases."
+  },
+  {
+    "role": "user",
+    "content": "create A/B test case based on HTML and screenshot and replay with title, hypothesis, control, variant fields"
+  }
+]

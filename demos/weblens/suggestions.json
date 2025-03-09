@@ -1,0 +1,20 @@
+[
+  {
+    "suggestion": "Test Button Color Variations",
+    "hypothesis": "Changing the color of the 'Contact Me' button will increase the click-through rate (CTR).",
+    "control": "Button color: Blue",
+    "variant": "Button color: Green"
+  },
+  {
+    "suggestion": "Test Headline Font Size",
+    "hypothesis": "Increasing the headline font size will make it more attention-grabbing, leading to higher engagement.",
+    "control": "Font size: 48px",
+    "variant": "Font size: 64px"
+  },
+  {
+    "suggestion": "Test Background Color Schemes",
+    "hypothesis": "Changing the background color scheme from light to dark will improve user perception and reduce eye strain, leading to longer time spent on the page.",
+    "control": "Background color: Light",
+    "variant": "Background color: Dark"
+  }
+]
