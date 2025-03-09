@@ -74,30 +74,33 @@ export default async function Page({ params, searchParams }: Props) {
         </div>
       </section>
       <section className="mt-10">
-        <ul className="flex justify-center gap-6 h-25 overflow-auto">
+        <ul className="flex md:justify-center gap-6 h-25 *:min-w-28 overflow-auto">
           {!isAll && (
-            <CollectionLink
-              href="/collections/all"
-              src="/images/placeholder.jpg"
-              alt="the store image"
-            >
-              &lt;{" "}
-              <span className="underline-decorator after:group-hover:scale-50">
-                The Store
-              </span>
-            </CollectionLink>
+            <li>
+              <CollectionLink
+                href="/collections/all"
+                src="/images/placeholder.jpg"
+                alt="the store image"
+              >
+                &lt;{" "}
+                <span className="underline-decorator after:group-hover:scale-50">
+                  The Store
+                </span>
+              </CollectionLink>
+            </li>
           )}
           {relatedCollections.map((collection) => (
-            <CollectionLink
-              key={collection}
-              src="/images/placeholder.jpg"
-              alt={`${collection}'s image`}
-              href={`/collections/${collection}`}
-            >
-              <span className="underline-decorator after:group-hover:scale-50">
-                {collection}
-              </span>
-            </CollectionLink>
+            <li key={collection}>
+              <CollectionLink
+                src="/images/placeholder.jpg"
+                alt={`${collection}'s image`}
+                href={`/collections/${collection}`}
+              >
+                <span className="underline-decorator after:group-hover:scale-50">
+                  {collection}
+                </span>
+              </CollectionLink>
+            </li>
           ))}
         </ul>
       </section>
