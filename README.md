@@ -32,6 +32,52 @@ Build an e-commerce website that includes the following pages:
 - [Product page](https://venue-theme-morning.myshopify.com/collections/accessories/products/copy-of-drift-hat)
 - [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
 
+> - [GitHub Repo](https://github.com/rainforest-dev/abconvert-frontend-interview-question)
+> - [Live URL](https://abconvert-frontend-interview-question.vercel.app/)
+> - ![Demo Video](./demos/task1.mp4)
+
+#### Project Structure
+
+```
+src/
+├── components/: components that can be reused across the website
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   └── ...
+├── app/: put components specific for the routes here next to the route used them.
+│   ├── layout.tsx: fonts, global styles, and metadata
+│   ├── (e-commerce): routes for task 1
+│   │   ├── page.tsx: home page
+│   │   ├── collections/[name]/page.tsx: collection pages
+│   │   └── products/[id]/page.tsx: product pages
+│   ├── (weblens): routes for task 2
+│   │   └── weblens
+│   │       ├── hypotheses/page.tsx: page to upload suggestions.json
+│   │       └── page.tsx: currently cannot analyze url via backend endpoint, so this route is not functional
+│   ├── globals.css: global styles and tailwind css configurations
+│   └── ...
+├── utils/: utility functions and constants
+├── types/: type definitions
+assets/
+├── product.json: JSON file containing product data
+public/
+├── images/
+├── product-images/
+│   ├── product1.jpg
+│   ├── product2.jpg
+│   └── ...
+└── ...
+```
+
+#### Development Locally
+
+To run the project locally, follow these steps:
+
+```bash
+npm i
+npm run dev
+```
+
 ### Bonus Task: A/B Test Recommendation Engine
 
 Create an A/B test recommendation engine that suggests the best recommendations for users.
@@ -86,6 +132,8 @@ node ➜ /workspaces/abconvert-frontend-interview-question (main) $ npx jiti ./s
 │
 └  Suggestions saved to suggestions.json
 ```
+
+#### Visualization of Suggestions
 
 After running the script, you will find `suggestions.json` in the output directory. This file contains the A/B testing suggestions for the provided URL. Then go to [/weblens/hypotheses](https://abconvert-frontend-interview-question.vercel.app/weblens/hypotheses) and upload the `suggestions.json` file to view the A/B testing hypotheses.
 
