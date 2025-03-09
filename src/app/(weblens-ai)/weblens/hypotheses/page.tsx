@@ -5,7 +5,7 @@ export default async function Page({
 }: {
   searchParams: Promise<{ url: string }>;
 }) {
-  const { url } = await searchParams;
+  const { url = "https://rainforest.tools/en" } = await searchParams;
 
   return (
     <main className="flex container mx-auto gap-10">

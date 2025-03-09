@@ -9,6 +9,7 @@ import {
 } from "@clack/prompts";
 import { getPageContent } from "./crawler";
 import { analyzeContent, type ProviderType } from "./analyze";
+import { outputPath } from "./config";
 
 async function main() {
   intro("A/B Testing Suggestions Generator");
@@ -84,7 +85,7 @@ async function main() {
     process.exit(1);
   }
 
-  outro("Suggestions saved to suggestions.json");
+  outro(`Suggestions saved to ${outputPath("suggestions.json")}`);
 }
 
 main().catch(console.error);

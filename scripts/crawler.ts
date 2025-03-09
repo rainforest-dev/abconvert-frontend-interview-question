@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
 import * as fs from "fs";
+import { outputPath } from "./config";
 
 export async function getPageContent(url: string) {
   const browser = await chromium.launch({ headless: true });
@@ -8,7 +9,7 @@ export async function getPageContent(url: string) {
   await page.goto(url, { waitUntil: "networkidle" });
 
   const buffer = await page.screenshot({
-    path: "out/screenshot.jpg",
+    path: outputPath("screenshot.jpg"),
     fullPage: true,
   });
   const screenshot = buffer.toString("base64");
@@ -23,7 +24,7 @@ export async function getPageContent(url: string) {
   });
   const content = await page.locator("body").innerHTML();
 
-  fs.writeFileSync("out/page.html", content);
+  fs.writeFileSync(outputPath("page.html"), content);
 
   await browser.close();
   return [content, screenshot];

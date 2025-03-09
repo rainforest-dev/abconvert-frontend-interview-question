@@ -4,6 +4,8 @@ import messages from "./messages.json";
 import { configDotenv } from "dotenv";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod.mjs";
+import { config } from "./config";
+import { outputPath } from "./config";
 
 configDotenv();
 
@@ -64,7 +66,7 @@ const analyzeWithOllama = async (
   screenshot: string,
   model: string
 ) => {
-  const url = process.env.OLLAMA_API_URL ?? "http://localhost:11434";
+  const url = config.ollama.url;
   const res = await fetch(`${url}/api/chat`, {
     method: "POST",
     headers: {
@@ -141,7 +143,10 @@ export async function analyzeContent(
       break;
   }
   if (data) {
-    fs.writeFileSync("out/suggestions.json", JSON.stringify(data, null, 2));
+    fs.writeFileSync(
+      outputPath("suggestions.json"),
+      JSON.stringify(data, null, 2)
+    );
   } else {
     throw new Error("Failed to generate A/B testing suggestions.");
   }

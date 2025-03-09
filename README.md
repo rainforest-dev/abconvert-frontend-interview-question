@@ -48,6 +48,49 @@ Create an A/B test recommendation engine that suggests the best recommendations 
 
 We highly recommend you complete this task.
 
+#### Analysis Tool
+
+##### Folder Structure
+
+```
+.
+├── scripts
+│   ├──crawler.ts: Crawls the website and extracts relevant data. (HTML and screenshot)
+│   ├──analyze.ts: Analyzes the extracted data and determines suitable elements for A/B testing.
+│   │               Currently support Ollama and OpenAI(Recommended)
+│   └── index.ts: Main entry point powered by @clack/prompts
+└── .env.local: put api urls, api keys and some other configurations here.
+```
+
+##### Usage
+
+```bash
+npx jiti ./scripts/index.ts
+```
+
+```
+node ➜ /workspaces/abconvert-frontend-interview-question (main) $ npx jiti ./scripts/index.ts
+┌  A/B Testing Suggestions Generator
+│
+◆  Enter the URL of the page you want to generate A/B testing suggestions for:
+│  _
+◇  Enter the URL of the page you want to generate A/B testing suggestions for:
+│  https://rainforest.tools/en
+│
+◇  Choose a language model to analyze the content:
+│  gpt-4o-mini
+│
+◇  Page crawled successfully. Content length: 25309 characters
+│
+◇  Analyzing the content
+│
+└  Suggestions saved to suggestions.json
+```
+
+After running the script, you will find `suggestions.json` in the output directory. This file contains the A/B testing suggestions for the provided URL. Then go to [/weblens/hypotheses](https://abconvert-frontend-interview-question.vercel.app/weblens/hypotheses) and upload the `suggestions.json` file to view the A/B testing hypotheses.
+
+![View Suggestions](./demos/images/view-suggestions.gif)
+
 ## Evaluation criteria
 
 ### Requirement Fulfillment

@@ -22,6 +22,11 @@ export default function Suggestions() {
     }
   };
 
+  const pickAnother = () => {
+    setSuggestions([]);
+    setFile(null);
+  };
+
   useEffect(() => {
     if (file) {
       const reader = new FileReader();
@@ -72,7 +77,7 @@ export default function Suggestions() {
         ))}
         <button
           className="btn rounded-full bg-amber-600 font-bold w-fit"
-          onClick={() => setFile(null)}
+          onClick={pickAnother}
         >
           Upload another file
         </button>
