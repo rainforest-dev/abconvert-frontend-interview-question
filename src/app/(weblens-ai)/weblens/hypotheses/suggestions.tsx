@@ -81,9 +81,9 @@ export default function Suggestions() {
 
   return (
     <FileUpload
-      value={file}
       onChange={setFile}
       validateOnDrag={(item) => item.type === "application/json"}
+      validateOnDrop={(file) => file.type === "application/json"}
       accept=".json"
       name="suggestions-file"
     >

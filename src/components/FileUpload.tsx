@@ -1,8 +1,10 @@
+"use client";
 import {
-  ChangeEventHandler,
-  ComponentProps,
-  DragEventHandler,
-  PropsWithChildren,
+  type ChangeEventHandler,
+  type ComponentProps,
+  type DragEventHandler,
+  type PropsWithChildren,
+  useRef,
   useState,
 } from "react";
 
@@ -11,19 +13,20 @@ interface IProps
     ComponentProps<"input">,
     "value" | "onChange" | "className" | "type"
   > {
-  value: File | null;
   onChange: (file: File | null) => void;
   validateOnDrag: (file: DataTransferItem) => boolean;
+  validateOnDrop: (file: File) => boolean;
 }
 
 export default function FileUpload({
   name,
-  value,
   onChange,
   validateOnDrag,
+  validateOnDrop,
   children,
   ...inputProps
 }: PropsWithChildren<IProps>) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
 
   const handleFileChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -36,6 +39,13 @@ export default function FileUpload({
   const handleDropFile: DragEventHandler<HTMLLabelElement> = (e) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
+    if (!validateOnDrop(droppedFile)) {
+      alert("Invalid file type");
+      return;
+    }
+    if (inputRef.current) {
+      inputRef.current.files = e.dataTransfer.files;
+    }
     onChange(droppedFile);
     setIsDragOver(false);
   };
@@ -62,6 +72,7 @@ export default function FileUpload({
     >
       {children}
       <input
+        ref={inputRef}
         type="file"
         id={name}
         name={name}
