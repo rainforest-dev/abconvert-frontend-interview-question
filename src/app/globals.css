@@ -51,4 +51,12 @@
   .divider {
     @apply w-9 border-primary;
   }
+  .underline-decorator {
+    @apply relative;
+    &::after {
+      @apply content-[''] block mt-1;
+      @apply border-b-2 border-foreground transition-transform;
+      @apply scale-0 hover:scale-100 group-hover:scale-100;
+    }
+  }
 }

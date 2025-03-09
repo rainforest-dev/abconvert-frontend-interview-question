@@ -1,7 +1,8 @@
-import { getProductsByCollection } from "@/utils";
+import { getProductsByCollection, getRelatedCollections } from "@/utils";
 import { ProductCard } from "@/components";
 import NextImage from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
+import CollectionLink from "./CollectionLink";
 
 type Props = {
   params: Promise<{ name: string }>;
@@ -12,6 +13,12 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { name } = await params;
+
+  if (name === "all") {
+    return {
+      title: "The Store - Venue Theme Morning",
+    };
+  }
 
   const previousImages = (await parent).openGraph?.images || [];
 
@@ -25,6 +32,9 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { name } = await params;
+  const isAll = name === "all";
+  const title = isAll ? "The Store" : name;
+  const relatedCollections = getRelatedCollections(name, isAll ? 5 : 4);
   const products = getProductsByCollection(name);
   const length = products.length;
 
@@ -32,7 +42,7 @@ export default async function Page({ params }: Props) {
     <main className="container mx-auto">
       <section className="flex-row-center gap-10">
         <div className="w-1/3 flex-col-center gap-4">
-          <h1 className="capitalize font-bold text-xl">{name}</h1>
+          <h1 className="capitalize font-bold text-xl">{title}</h1>
           <hr className="divider" />
           <p className="text-sm leading-loose">
             Choose well and buy less. We believe in owning fewer, quality things
@@ -49,6 +59,34 @@ export default async function Page({ params }: Props) {
             className="w-full object-cover"
           />
         </div>
+      </section>
+      <section className="mt-10">
+        <ul className="flex justify-center gap-6 h-25">
+          {!isAll && (
+            <CollectionLink
+              href="/collections/all"
+              src="/images/placeholder.jpg"
+              alt="the store image"
+            >
+              &lt;{" "}
+              <span className="underline-decorator after:group-hover:scale-50">
+                The Store
+              </span>
+            </CollectionLink>
+          )}
+          {relatedCollections.map((collection) => (
+            <CollectionLink
+              key={collection}
+              src="/images/placeholder.jpg"
+              alt={`${collection}'s image`}
+              href={`/collections/${collection}`}
+            >
+              <span className="underline-decorator after:group-hover:scale-50">
+                {collection}
+              </span>
+            </CollectionLink>
+          ))}
+        </ul>
       </section>
       <div className="flex mb-4 mt-10 text-xs text-foreground/50">
         <div className="grow"></div>
