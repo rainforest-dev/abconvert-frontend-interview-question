@@ -67,7 +67,7 @@ export default async function Page({ params }: Props) {
             <br />
             <span className="text-xs font-extralight">Tax included</span>
           </p>
-          <Form name={product.name} color={product.color} />
+          <Form name={product.name} color={product.color} size={product.size} />
           <div className="mt-10">
             <h2 className="text-lg font-bold mb-6">Goes well with</h2>
             <div className="flex gap-4">
