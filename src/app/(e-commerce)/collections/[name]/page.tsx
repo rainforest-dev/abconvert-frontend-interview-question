@@ -38,7 +38,9 @@ export async function generateMetadata(
 
 export default async function Page({ params, searchParams }: Props) {
   const { name } = await params;
-  const { page = 1, size = 18 } = await searchParams;
+  const _searchParams = await searchParams;
+  const page = _searchParams.page ? Number(_searchParams.page) : 1;
+  const size = _searchParams.size ? Number(_searchParams.size) : 18;
   const isAll = name === "all";
   const title = isAll ? "The Store" : name;
   const relatedCollections = getRelatedCollections(name, isAll ? 5 : 4);
@@ -51,8 +53,8 @@ export default async function Page({ params, searchParams }: Props) {
 
   return (
     <main className="container">
-      <section className="flex-row-center gap-10">
-        <div className="w-1/3 flex-col-center gap-4">
+      <section className="flex-col-center md:flex-row gap-10 text-center">
+        <div className="w-4/5 md:w-1/3 flex-col-center gap-4 order-last md:order-first">
           <h1 className="capitalize font-bold text-xl">{title}</h1>
           <hr className="divider" />
           <p className="text-sm leading-loose">
@@ -120,16 +122,24 @@ export default async function Page({ params, searchParams }: Props) {
                 &#8592;
               </NextLink>
             )}
-            {Array.from({ length: totalPage }, (_, i) => (
-              <NextLink
-                key={`page-${i + 1}-link`}
-                href={`/collections/${name}?page=${i + 1}`}
-                data-active={page == i + 1 ? true : undefined}
-                className="data-[active=true]:bg-foreground/10 data-[active=true]:font-bold"
-              >
-                {i + 1}
-              </NextLink>
-            ))}
+            {Array.from({ length: 7 }, (_, i) => {
+              const start = Math.max(
+                0,
+                Math.min(totalPage - 7, 5 * Math.floor(page / 5) - 2)
+              );
+              const linkPage = start + i + 1;
+
+              return (
+                <NextLink
+                  key={`${i}-${linkPage}-link`}
+                  href={`/collections/${name}?page=${linkPage}`}
+                  data-active={page === linkPage ? true : undefined}
+                  className="data-[active=true]:bg-foreground/10 data-[active=true]:font-bold"
+                >
+                  {linkPage}
+                </NextLink>
+              );
+            })}
             {page < totalPage && (
               <NextLink href={`/collections/${name}?page=${page + 1}`}>
                 &#8594;
