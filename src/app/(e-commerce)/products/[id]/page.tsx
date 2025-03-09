@@ -51,7 +51,7 @@ export default async function Page({ params }: Props) {
   return (
     <main className="py-12">
       <Breadcrumb crumbs={crumbs} />
-      <section className="flex gap-10 mt-10 md:flex-row flex-col container mx-auto">
+      <section className="flex gap-10 mt-10 md:flex-row flex-col container">
         <NextImage
           src={productImage(product.image)}
           alt={`${product.name} image`}
@@ -83,7 +83,7 @@ export default async function Page({ params }: Props) {
         </div>
       </section>
       <section className="bg-foreground/5 py-10 mt-10">
-        <div className="container mx-auto flex-col-center">
+        <div className="container flex-col-center">
           <h2 className="text-lg font-bold">Crafted for every occasion</h2>
           <hr className="divider mt-3.5 mb-10" />
           <NextImage
@@ -117,7 +117,7 @@ export default async function Page({ params }: Props) {
           </div>
         </div>
       </section>
-      <section className="flex-col-center mt-10 container mx-auto">
+      <section className="flex-col-center mt-10 container">
         <h2 className="text-lg font-bold">You may also like</h2>
         <hr className="divider mt-3.5 mb-5" />
         <div className="flex gap-4">

@@ -19,7 +19,7 @@ export default async function Page({ searchParams }: Props) {
   const { url = "https://rainforest.tools/en" } = await searchParams;
 
   return (
-    <main className="flex container mx-auto gap-10">
+    <main className="flex container gap-10">
       <div className="h-screen sticky top-0 flex-1 flex-center">
         <h1 className="text-6xl text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-amber-300">
           Review generated hypotheses and convert them into A/B tests
