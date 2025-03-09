@@ -14,10 +14,10 @@ export default function Home() {
           fill
           className="object-cover brightness-75"
         />
-        <div className="text-background flex flex-col gap-2 z-10">
+        <div className="text-background flex flex-col gap-2 z-10 md:max-w-[40%]">
           <h1 className="text-5xl w-fit">Less but better</h1>
           <hr className="divider" />
-          <p className="max-w-[33%] text-lg">
+          <p className="text-lg">
             Discover the art of minimalism. Choose quality over quantity and
             experience the joy of owning fewer, but truly special items. Our
             curated collection is designed to enhance your life with thoughtful,
