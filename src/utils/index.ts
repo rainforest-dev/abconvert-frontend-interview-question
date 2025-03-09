@@ -16,6 +16,28 @@ export const getProductsByCollection = (collection: string): IProduct[] =>
     ? products
     : products.filter((product) => product.collection === collection);
 
+/**
+ * Create pagination for a list of items.
+ *
+ * @template T - The type of the items in the list.
+ * @param {T[]} items - The list of items to paginate.
+ * @param {number} page - The current page number (1-based).
+ * @param {number} size - The number of items per page.
+ * @returns {{ items: T[]; totalPage: number; totalItems: number }} - An object containing the paginated items, the total number of pages, and the total number of items.
+ */
+export const createPagination = <T>(
+  items: T[],
+  page: number,
+  size: number
+): { items: T[]; totalPage: number; totalItems: number } => {
+  const totalPage = Math.ceil(items.length / size);
+  return {
+    items: items.slice((page - 1) * size, page * size),
+    totalPage,
+    totalItems: items.length,
+  };
+};
+
 export const getProductSuggestions = (product: IProduct, top = 3) => {
   const suggestions = products.filter(
     (p) =>
