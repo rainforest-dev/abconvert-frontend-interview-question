@@ -30,7 +30,7 @@ async function main() {
         label: "llama 3.2",
         value: {
           provider: "ollama" as ProviderType,
-          model: "llama3.2:latest",
+          model: "llama3.2-vision:latest",
         },
       },
       {
@@ -56,20 +56,26 @@ async function main() {
   }
 
   let content: string;
+  let screenshot: string;
 
   try {
     await tasks([
       {
         title: "Crawling the page",
         task: async () => {
-          content = await getPageContent(url);
+          [content, screenshot] = await getPageContent(url);
           return `Page crawled successfully. Content length: ${content.length} characters`;
         },
       },
       {
         title: "Analyzing the content",
         task: async () => {
-          await analyzeContent(content, model.provider, model.model);
+          await analyzeContent(
+            content,
+            screenshot,
+            model.provider,
+            model.model
+          );
         },
       },
     ]);

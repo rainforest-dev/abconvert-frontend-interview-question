@@ -28,15 +28,18 @@ export default function Suggestions() {
       reader.onload = (e) => {
         if (e.target?.result) {
           const jsonData = JSON.parse(e.target.result as string);
-          console.log(jsonData);
-          setSuggestions(jsonData);
+          if (Array.isArray(jsonData)) setSuggestions(jsonData);
+          else {
+            setFile(null);
+            alert("Invalid JSON format");
+          }
         }
       };
       reader.readAsText(file);
     }
   }, [file]);
 
-  if (file) {
+  if (suggestions.length) {
     return (
       <div className="flex-col-center gap-10">
         {suggestions.map((suggestion, index) => (
