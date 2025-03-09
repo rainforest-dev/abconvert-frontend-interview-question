@@ -82,7 +82,7 @@ export default async function Page({ params }: Props) {
           </div>
         </div>
       </section>
-      <section className="bg-gray-50 py-10 mt-10">
+      <section className="bg-foreground/5 py-10 mt-10">
         <div className="container mx-auto flex-col-center">
           <h2 className="text-lg font-bold">Crafted for every occasion</h2>
           <hr className="divider mt-3.5 mb-10" />

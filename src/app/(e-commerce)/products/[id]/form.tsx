@@ -13,7 +13,7 @@ export default function Form({
     <form>
       <div className="flex flex-col gap-2 mb-8 text-xs">
         <p className="font-bold">
-          Color: <span className="text-gray-500">{selectedColor}</span>
+          Color: <span className="text-foreground/50">{selectedColor}</span>
         </p>
         <ColorPicker
           value={selectedColor}

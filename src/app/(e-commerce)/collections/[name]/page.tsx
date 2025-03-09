@@ -50,7 +50,7 @@ export default async function Page({ params }: Props) {
           />
         </div>
       </section>
-      <div className="flex mb-4 mt-10 text-xs text-gray-500">
+      <div className="flex mb-4 mt-10 text-xs text-foreground/50">
         <div className="grow"></div>
         <div>{length} products</div>
       </div>

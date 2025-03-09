@@ -9,14 +9,14 @@ export default function Breadcrumb({ crumbs }: IProps) {
     <nav aria-label="breadcrumb">
       <ol className="flex-row-center text-xs justify-center">
         {crumbs.map((crumb, index) => (
-          <li key={index} className="text-gray-600 last:text-foreground">
+          <li key={index} className="text-foreground/60 last:text-foreground">
             {crumb.path ? (
               <NextLink href={crumb.path}>{crumb.name}</NextLink>
             ) : (
               crumb.name
             )}
             {index !== crumbs.length - 1 && (
-              <span className="mx-2 text-gray-400">&gt;</span>
+              <span className="mx-2 text-foreground/40">&gt;</span>
             )}
           </li>
         ))}
