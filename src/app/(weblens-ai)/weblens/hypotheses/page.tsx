@@ -1,10 +1,21 @@
+import type { Metadata } from "next";
 import Suggestions from "./suggestions";
 
-export default async function Page({
-  searchParams,
-}: {
+type Props = {
   searchParams: Promise<{ url: string }>;
-}) {
+};
+
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
+  const { url = "https://rainforest.tools/en" } = await searchParams;
+
+  return {
+    title: `WebLens | Generated hypotheses for ${url}`,
+  };
+}
+
+export default async function Page({ searchParams }: Props) {
   const { url = "https://rainforest.tools/en" } = await searchParams;
 
   return (
