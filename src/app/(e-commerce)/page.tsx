@@ -39,7 +39,7 @@ export default function Home() {
               <Tabs.Trigger
                 key={collection}
                 value={collection}
-                className="text-gray-700 data-[state=active]:text-foreground after:content-[''] after:block after:mt-2
+                className="text-foreground/70 data-[state=active]:text-foreground after:content-[''] after:block after:mt-2
                             after:border-b-2 after:border-foreground after:transition-transform 
                             after:scale-0 data-[state=active]:after:scale-100 hover:after:scale-100"
               >
