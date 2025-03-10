@@ -8,8 +8,8 @@ import {
   text,
 } from "@clack/prompts";
 import { getPageContent } from "./crawler";
-import { analyzeContent, type ProviderType } from "./analyze";
-import { outputPath } from "./config";
+import { analyzeContent } from "./analyze";
+import { outputPath, supportedModels } from "./config";
 
 async function main() {
   intro("A/B Testing Suggestions Generator");
@@ -26,29 +26,7 @@ async function main() {
 
   const model = await select({
     message: "Choose a language model to analyze the content:",
-    options: [
-      {
-        label: "llama 3.2",
-        value: {
-          provider: "ollama" as ProviderType,
-          model: "llama3.2-vision:latest",
-        },
-      },
-      {
-        label: "Phi 4",
-        value: {
-          provider: "ollama" as ProviderType,
-          model: "phi4:latest",
-        },
-      },
-      {
-        label: "gpt-4o-mini",
-        value: {
-          provider: "openai" as ProviderType,
-          model: "gpt-4o-mini",
-        },
-      },
-    ],
+    options: supportedModels,
   });
 
   if (isCancel(model)) {

@@ -33,8 +33,9 @@ Build an e-commerce website that includes the following pages:
 - [Collection page](https://venue-theme-morning.myshopify.com/collections/accessories)
 
 https://github.com/user-attachments/assets/3c7523fc-fa7b-436e-92f9-8a32cc5d8ef3
+
 > - [GitHub Repo](https://github.com/rainforest-dev/abconvert-frontend-interview-question)
-> - [Live URL](https://abconvert-frontend-interview-question.vercel.app/) 
+> - [Live URL](https://abconvert-frontend-interview-question.vercel.app/)
 
 #### Project Structure
 
@@ -104,9 +105,16 @@ We highly recommend you complete this task.
 │   ├──crawler.ts: Crawls the website and extracts relevant data. (HTML and screenshot)
 │   ├──analyze.ts: Analyzes the extracted data and determines suitable elements for A/B testing.
 │   │               Currently support Ollama and OpenAI(Recommended)
+│   ├──messages.json: JSON file containing prompts for the AI.
 │   └── index.ts: Main entry point powered by @clack/prompts
 └── .env.local: put api urls, api keys and some other configurations here.
 ```
+
+##### Customization
+
+- You can provide output path, api keys, and api urls in `.env.local`.
+- You can customize the `config.ts` to support more model types.
+- You can modify `messages.json` to customize the prompts sent to the AI.
 
 ##### Usage
 

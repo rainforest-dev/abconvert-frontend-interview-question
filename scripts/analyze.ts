@@ -4,14 +4,11 @@ import messages from "./messages.json";
 import { configDotenv } from "dotenv";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod.mjs";
-import { config } from "./config";
-import { outputPath } from "./config";
+import { config, type ProviderType, outputPath } from "./config";
 
 configDotenv();
 
 const openai = new OpenAI();
-
-export type ProviderType = "ollama" | "openai";
 
 export const format = {
   type: "object",
