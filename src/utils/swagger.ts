@@ -9,5 +9,13 @@ export const getApiSpec = () =>
         title: "ABConvert Frontend Interview Question APIs",
         version: "1.0.0",
       },
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: "http",
+            scheme: "bearer",
+          },
+        },
+      },
     },
   });

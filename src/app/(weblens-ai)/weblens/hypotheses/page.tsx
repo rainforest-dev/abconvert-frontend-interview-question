@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hypotheses from "./hypotheses";
+import NextLink from "next/link";
 
 type Props = {
   searchParams: Promise<{ url: string }>;
@@ -25,9 +26,15 @@ export default async function Page({ searchParams }: Props) {
           Review generated hypotheses and convert them into A/B tests
         </h1>
       </div>
-      <section className="flex-1 pt-56 pb-40">
+      <section className="flex-1 pt-56 pb-40 flex flex-col">
         <h2 className="text-purple-300 mb-4">Hypotheses for {url}</h2>
         <Hypotheses url={url} />
+        <NextLink
+          href="/weblens"
+          className="self-center mt-10 btn rounded-full bg-amber-600 font-bold w-fit"
+        >
+          Analyze another website
+        </NextLink>
       </section>
     </main>
   );

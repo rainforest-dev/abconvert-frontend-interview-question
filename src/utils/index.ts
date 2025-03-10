@@ -78,6 +78,17 @@ export const getRelatedCollections = (collection: string, top = 3) => {
 
 export const productImage = (image: string) => `/product-images/${image}`;
 
+export const getLocalStorageItem = (
+  key: string,
+  defaultValue?: string
+): string | null => {
+  if (typeof window !== "undefined") {
+    const item = localStorage.getItem(key);
+    return item ? item : defaultValue ?? null;
+  }
+  return null;
+};
+
 export * from "./crawler";
 export * from "./analyze";
 export * from "./schema";

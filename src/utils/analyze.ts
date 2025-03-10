@@ -1,21 +1,46 @@
 "use server";
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI } from "@ai-sdk/openai";
 import { createOllama } from "ollama-ai-provider";
-import { streamObject } from "ai";
+import {
+  // generateObject,
+  streamObject,
+} from "ai";
 import { hypothesisSchema } from "./schema";
 import { z } from "zod";
 
-// const model = openai("gpt-4o-mini", {
-//   structuredOutputs: true,
-// });
+interface IModelOptions {
+  provider: "ollama" | "openai";
+  model: string;
+  apiKey?: string;
+  baseURL?: string;
+}
 
-const ollama = createOllama({
-  baseURL: `${process.env.OLLAMA_API_URL}/api`,
-});
+const createModel = ({ provider, apiKey, baseURL, model }: IModelOptions) => {
+  switch (provider) {
+    case "ollama":
+      return createOllama({
+        baseURL,
+      })(model);
+    case "openai":
+      if (!apiKey) throw new Error("API key is required for OpenAI provider");
+      return createOpenAI({
+        baseURL,
+        apiKey,
+      })(model, {
+        structuredOutputs: true,
+      });
+    default:
+      throw new Error(`Unsupported provider: ${provider}`);
+  }
+};
 
-const model = ollama("phi4:latest");
-
-export const analyzeContent = async (content: string, screenshot: string) => {
+export const analyzeContent = async (
+  content: string,
+  screenshot: string,
+  { provider = "ollama", model: modelName, baseURL, apiKey }: IModelOptions
+) => {
+  const model = createModel({ provider, model: modelName, baseURL, apiKey });
+  // const result = generateObject({
   const result = streamObject({
     model,
     schemaName: "hypotheses",
@@ -45,4 +70,5 @@ export const analyzeContent = async (content: string, screenshot: string) => {
     ],
   });
   return result.toTextStreamResponse();
+  // return Response.json((await result).object);
 };

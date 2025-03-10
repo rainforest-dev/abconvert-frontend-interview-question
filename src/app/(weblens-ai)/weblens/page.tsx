@@ -1,12 +1,59 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { getLocalStorageItem } from "@/utils";
+
+interface IFormValues {
+  provider: "ollama" | "openai";
+  model: string;
+  baseURL?: string;
+  apiKey?: string; // Required for OpenAI provider. Optional for Ollama.
+}
+
+const schema = z.object({
+  provider: z.enum(["ollama", "openai"]).default("ollama"),
+  model: z.string(),
+  baseURL: z.string().url().optional(),
+  apiKey: z.string().optional(),
+});
+
+const getDefaultValues = () => {
+  if (typeof window === "undefined") return;
+  return {
+    provider: getLocalStorageItem("provider") as IFormValues["provider"],
+    model: getLocalStorageItem("model") ?? "gpt-4o-mini",
+    baseURL: getLocalStorageItem("baseURL") ?? "",
+    apiKey: getLocalStorageItem("apiKey") ?? "",
+  };
+};
 
 export default function Page() {
   const router = useRouter();
   const [url, setUrl] = useState("");
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { isValid },
+  } = useForm<IFormValues>({
+    defaultValues: getDefaultValues(),
+    resolver: zodResolver(schema),
+  });
 
-  const analyze = async () => {
+  const updateProvider: SubmitHandler<IFormValues> = async (values) => {
+    // save provider, baseURL, and apiKey to localStorage
+    localStorage.setItem("provider", values.provider);
+    localStorage.setItem("model", values.model);
+    localStorage.setItem("baseURL", values.baseURL ?? "");
+    localStorage.setItem("apiKey", values.apiKey ?? "");
+  };
+
+  const analyze = () => {
+    const values = getValues();
+    updateProvider(values);
     router.push(`/weblens/hypotheses?url=${url}`);
   };
 
@@ -31,13 +78,44 @@ export default function Page() {
             required
           />
           <button
-            disabled={!url}
             onClick={analyze}
+            disabled={!isValid || !url}
             className="btn rounded-[inherit] bg-amber-600 font-bold disabled:opacity-50"
           >
             Analyze
           </button>
         </label>
+        <form
+          onSubmit={handleSubmit(updateProvider)}
+          className="flex flex-col gap-2 px-4 py-2 border border-amber-300 border-dashed rounded-lg
+                      *:bg-transparent *:text-purple-100 *:border *:rounded *:px-2 *:py-1"
+        >
+          <select id="provider" {...register("provider")}>
+            <option value="ollama">Ollama</option>
+            <option value="openai">OpenAI</option>
+          </select>
+          <input
+            type="text"
+            id="model"
+            {...register("model")}
+            placeholder="Choose model to use"
+          />
+          <input
+            type="text"
+            autoComplete="off"
+            id="baseURL"
+            {...register("baseURL")}
+            placeholder="Enter Base URL here"
+          />
+          <input
+            type="password"
+            autoComplete="off"
+            id="apiKey"
+            {...register("apiKey")}
+            placeholder="Enter API Key here"
+            style={{ colorScheme: "dark" }}
+          />
+        </form>
       </section>
     </main>
   );

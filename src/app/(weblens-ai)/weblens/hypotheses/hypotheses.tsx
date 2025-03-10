@@ -1,10 +1,12 @@
 "use client";
 import { experimental_useObject as useObject } from "@ai-sdk/react";
-import { hypothesisSchema } from "@/utils";
+import { getLocalStorageItem, hypothesisSchema } from "@/utils";
 import { z } from "zod";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Hypotheses({ url }: { url: string }) {
+  const router = useRouter();
   const {
     object: hypotheses,
     isLoading,
@@ -12,10 +14,22 @@ export default function Hypotheses({ url }: { url: string }) {
   } = useObject({
     api: "/api/weblens",
     schema: z.object({ hypotheses: z.array(hypothesisSchema) }),
+    headers: {
+      Authorization: `Bearer ${getLocalStorageItem("apiKey")}`,
+    },
   });
 
   useEffect(() => {
-    submit({ url });
+    const provider = getLocalStorageItem("provider");
+    const model = getLocalStorageItem("model");
+    const baseURL = getLocalStorageItem("baseURL");
+    const apiKey = getLocalStorageItem("apiKey");
+    if (!provider || !model || !baseURL || (provider === "openai" && !apiKey)) {
+      alert("Please configure your API settings first");
+      router.replace("/weblens");
+      return;
+    }
+    submit({ url, provider, model, baseURL });
   }, []);
 
   return (
