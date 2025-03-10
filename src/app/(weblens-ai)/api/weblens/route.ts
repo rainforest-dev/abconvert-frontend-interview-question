@@ -53,7 +53,6 @@ export async function POST(request: NextRequest) {
   if (!apiKey && provider === "openai") {
     return new Response("API key is required", { status: 401 });
   }
-  console.log(provider, model, baseURL, apiKey, url);
 
   if (!url) {
     return new Response("URL is required", { status: 400 });
