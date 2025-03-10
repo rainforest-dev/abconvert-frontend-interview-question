@@ -93,7 +93,7 @@ export default async function Page({ params }: Props) {
             height={300}
             className="w-full aspect-video object-cover"
           />
-          <div className="flex gap-16 mt-16">
+          <div className="flex gap-16 mt-16 flex-col md:flex-row">
             <div>
               <h3 className="font-bold">Versatile</h3>
               <p className="text-sm">
