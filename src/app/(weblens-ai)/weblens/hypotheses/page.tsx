@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Suggestions from "./suggestions";
+import Hypotheses from "./hypotheses";
 
 type Props = {
   searchParams: Promise<{ url: string }>;
@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: Props) {
       </div>
       <section className="flex-1 pt-56 pb-40">
         <h2 className="text-purple-300 mb-4">Hypotheses for {url}</h2>
-        <Suggestions />
+        <Hypotheses url={url} />
       </section>
     </main>
   );

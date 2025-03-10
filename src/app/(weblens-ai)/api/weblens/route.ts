@@ -1,33 +1,39 @@
-import playwright from 'playwright';
+import { getPageContent, analyzeContent } from "@/utils";
+import type { NextRequest } from "next/server";
 
 /**
- * 
+ *
  * @swagger
- * /weblens:
- *   get:
+ * /api/weblens:
+ *   post:
  *     summary: Get the content of a webpage
  *     description: Get the content of a webpage
  *     tags:
  *       - weblens
- *     parameters:
- *       - in: query
- *         name: url
- *         required: true
- *         description: The URL of the webpage to get the content of
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               url:
+ *                 type: string
+ *                 description: The URL of the webpage to get the content from
  *     responses:
  *         200:
  *              description: The content of the webpage
  */
-export async function GET(request: Request) {
-    const url = new URL(request.url);
-    const browser = await playwright.chromium.launch({});
-    const page = await browser.newPage();
-    await page.goto(url.href, {waitUntil: 'networkidle'});
-    const content = await page.content();
-    await browser.close();
-    return new Response(content, {
-        headers: {
-        "content-type": "text/html; charset=UTF-8",
-        },
-    });
+export async function POST(request: NextRequest) {
+  //   const [content] = await getPageContent(request.url);
+  const { url } = (await request.json()) as { url: string };
+
+  if (!url) {
+    return new Response("URL is required", { status: 400 });
+  }
+  const [content, screenshot] = await getPageContent(url);
+
+  const hypotheses = await analyzeContent(content, screenshot);
+
+  return hypotheses;
 }
